@@ -19,13 +19,13 @@ const Form = () => {
 
 					<button
 						type='submit'
-						className='hover:border-gray-700 hover:text-gray-700 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-gray-200 font-sans text-lg font-medium text-gray-400 peer-focus:border-gray-700 peer-focus:bg-gray-700 peer-focus:text-white '>
+						className='hover:border-gray-700 hover:text-gray-700 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-gray-200 font-sans text-lg font-medium text-gray-400 peer-focus:border-gray-700 peer-focus:bg-gray-700 peer-focus:text-white transition-all duration-1000'>
 						{' '}
 						<p className='leading-none'>↵</p>{' '}
 					</button>
 				</form>
 
-				<div className='flex flex-col gap-1 max-h-60 overflow-y-auto'>
+				<div className='max-h-60 mt-2 flex flex-col gap-2 overflow-y-auto'>
 					<UrlContainer />
 					<UrlContainer />
 					<UrlContainer />
