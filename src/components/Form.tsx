@@ -20,6 +20,7 @@ const Form = () => {
 	const [getSummary, { isFetching, error, isSuccess }] =
 		useLazyGetSummaryQuery()
 
+	// to retrieve cached articles summary from localStorage
 	useEffect(() => {
 		const temp: string | null = localStorage.getItem('articles')
 
@@ -29,6 +30,7 @@ const Form = () => {
 		}
 	}, [])
 
+	// to set fetching status
 	useEffect(() => {
 		if (isFetching) {
 			dispatch(setStatus('fetching'))
@@ -44,6 +46,7 @@ const Form = () => {
 	// submit url to summarize
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
+		dispatch(setStatus('fetching'))
 
 		if (urlInputRef.current) {
 			let url: string = urlInputRef.current.value
@@ -53,7 +56,15 @@ const Form = () => {
 				dispatch(addUrl(url))
 				dispatch(addSummary(data.summary))
 
-				const updatedArticles = [...allArticles, { url, summary: data.summary }]
+				// remove duplicate items and updating the caching
+				const filteredArticles = allArticles.filter(
+					(article) => article.url !== url,
+				)
+
+				const updatedArticles = [
+					...filteredArticles,
+					{ url, summary: data.summary },
+				]
 				setAllArticles(updatedArticles)
 
 				localStorage.setItem('articles', JSON.stringify(updatedArticles))
@@ -62,6 +73,7 @@ const Form = () => {
 		}
 	}
 
+	// remove an article from localStorage
 	const removeItemfromStorage = (item: article) => {
 		const filteredArticles = allArticles.filter(
 			(article) => article.url !== item.url,
@@ -80,11 +92,6 @@ const Form = () => {
 			className='w-full max-w-7xl flex justify-center items-center gap-2 -z-10'>
 			<div className='mb-16 w-full max-w-xl'>
 				<form
-					// variants={showScaleUp}
-					// initial='initial'
-					// whileInView='animate'
-					// viewport={{ once: true }}
-					// transition={{ duration: 1, delay: 0.4 }}
 					onSubmit={handleSubmit}
 					className='relative flex justify-center items-center'>
 					<div className='absolute left-0 my-2 ml-3 w-5'>

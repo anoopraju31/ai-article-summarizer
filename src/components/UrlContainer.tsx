@@ -5,7 +5,6 @@ import { IoCloseOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 import { useAppDispatch } from '../hooks'
 import { addSummary, addUrl } from '../services/article'
-import { showUp } from '../utills/animations'
 
 interface article {
 	url: string
