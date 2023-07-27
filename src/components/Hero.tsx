@@ -10,7 +10,7 @@ const Hero = () => {
 				initial='initial'
 				whileInView='animate'
 				viewport={{ once: true }}
-				transition={{ duration: 1 }}
+				transition={{ duration: 0.6 }}
 				className='md:mt-10 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center'>
 				{' '}
 				Summerize Articles with
@@ -26,7 +26,7 @@ const Hero = () => {
 				initial='initial'
 				whileInView='animate'
 				viewport={{ once: true }}
-				transition={{ duration: 1, delay: 0.1 }}
+				transition={{ duration: 0.6, delay: 0.1 }}
 				className='mt-5 text-lg text-gray-600 sm:text-xl text-center max-w-2xl'>
 				Simplify your reading with Summize, an open-source article summarizer
 				that transforms lengthy articles into clear and concise summaries

@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { GoCopy } from 'react-icons/go'
 import { TiTick } from 'react-icons/ti'
 import { IoCloseOutline } from 'react-icons/io5'
+import { motion } from 'framer-motion'
 import { useAppDispatch } from '../hooks'
 import { addSummary, addUrl } from '../services/article'
+import { showUp } from '../utills/animations'
 
 interface article {
 	url: string
@@ -31,7 +33,17 @@ const UrlContainer = ({ item, remove }: UrlContainerProps) => {
 	}
 
 	return (
-		<div
+		<motion.div
+			initial={{
+				opacity: 0,
+				y: 10,
+			}}
+			whileInView={{
+				opacity: 1,
+				y: 0,
+			}}
+			transition={{ duration: 0.6 }}
+			viewport={{ once: true }}
 			onClick={handleClick}
 			className='group py-2 px-3 flex justify-start items-center flex-row gap-5 bg-white rounded-lg cursor-pointer hover:bg-slate-800/10 hover:text-gray-700 hover:shadow-sm transition-all duration-1000'>
 			<div className='w-7 h-7 bg-gray-50 group-hover:bg-white/20 rounded-full backdrop-blur cursor-pointer'>
@@ -53,7 +65,7 @@ const UrlContainer = ({ item, remove }: UrlContainerProps) => {
 					<IoCloseOutline />
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

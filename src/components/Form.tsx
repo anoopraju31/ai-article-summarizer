@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { BiSearch } from 'react-icons/bi'
+import { motion } from 'framer-motion'
 import UrlContainer from './UrlContainer'
 import { useAppDispatch } from '../hooks'
 import { useLazyGetSummaryQuery } from '../services/articleApi'
 import { addSummary, addUrl } from '../services/article'
+import { showScaleUp } from '../utills/animations'
 
 type article = {
 	url: string
@@ -55,9 +57,20 @@ const Form = () => {
 	}
 
 	return (
-		<section className='w-full max-w-7xl flex justify-center items-center gap-2 -z-10'>
+		<motion.section
+			variants={showScaleUp}
+			initial='initial'
+			whileInView='animate'
+			viewport={{ once: true }}
+			transition={{ duration: 1, delay: 0.2 }}
+			className='w-full max-w-7xl flex justify-center items-center gap-2 -z-10'>
 			<div className='mb-16 w-full max-w-xl'>
 				<form
+					// variants={showScaleUp}
+					// initial='initial'
+					// whileInView='animate'
+					// viewport={{ once: true }}
+					// transition={{ duration: 1, delay: 0.4 }}
 					onSubmit={handleSubmit}
 					className='relative flex justify-center items-center'>
 					<div className='absolute left-0 my-2 ml-3 w-5'>
@@ -90,7 +103,7 @@ const Form = () => {
 					))}
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	)
 }
 
