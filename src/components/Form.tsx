@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import UrlContainer from './UrlContainer'
-
-type formProps = {
-	summarize: (url: string) => Promise<string>
-}
+import { useAppDispatch } from '../hooks'
+import { useLazyGetSummaryQuery } from '../services/articleApi'
+import { addSummary, addUrl } from '../services/article'
 
 type article = {
 	url: string
 	summary: string
 }
 
-const Form = ({ summarize }: formProps) => {
+const Form = () => {
 	const urlInputRef = useRef<HTMLInputElement>(null)
 	const [allArticles, setAllArticles] = useState<article[]>([])
+	const dispatch = useAppDispatch()
+
+	const [getSummary] = useLazyGetSummaryQuery()
 
 	useEffect(() => {
 		const temp: string | null = localStorage.getItem('articles')
@@ -29,11 +31,15 @@ const Form = ({ summarize }: formProps) => {
 
 		if (urlInputRef.current) {
 			let url: string = urlInputRef.current.value
-			let summary: string = await summarize(url)
+			const { data } = await getSummary({ url })
 
-			if (summary) {
-				const updatedArticles = [...allArticles, { url, summary }]
+			if (data) {
+				dispatch(addUrl(url))
+				dispatch(addSummary(data.summary))
+
+				const updatedArticles = [...allArticles, { url, summary: data.summary }]
 				setAllArticles(updatedArticles)
+
 				localStorage.setItem('articles', JSON.stringify(updatedArticles))
 			}
 		}
