@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import UrlContainer from './UrlContainer'
+import { useLazyGetSummaryQuery } from '../services/article'
 
 type article = {
 	url: string
@@ -12,9 +13,18 @@ const Form = () => {
 		url: '',
 		summary: '',
 	})
+	const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery()
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
+
+		const { data } = await getSummary({
+			url: article.url,
+		})
+
+		if (data) {
+			console.log(data)
+		}
 	}
 
 	return (
