@@ -1,27 +1,23 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from './store'
 
-const api_key: string =
-	process.env.REACT_APP_RAPID_API_ARTICLE_KEY?.toString() || ''
+const initialState = {
+	url: '',
+	summary: '',
+}
 
-export const articleApi = createApi({
-	reducerPath: 'articleApi',
-	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://article-extractor-and-summarizer.p.rapidapi.com',
-		prepareHeaders: (headers) => {
-			headers.set('X-RapidAPI-Key', api_key)
-			headers.set(
-				'X-RapidAPI-Host',
-				'article-extractor-and-summarizer.p.rapidapi.com',
-			)
-			return headers
+export const articleSlice = createSlice({
+	name: 'article',
+	initialState,
+	reducers: {
+		addUrl: (state, action: PayloadAction<string>) => {
+			state.url = action.payload
 		},
-	}),
-	endpoints: (builder) => ({
-		getSummary: builder.query({
-			query: (params) =>
-				`/summarize?url=${encodeURIComponent(params.url)}&length=5`,
-		}),
-	}),
+		addSummary: (state, action: PayloadAction<string>) => {
+			state.summary = action.payload
+		},
+	},
 })
 
-export const { useLazyGetSummaryQuery } = articleApi
+export const { addUrl, addSummary } = articleSlice.actions
+export default articleSlice.reducer

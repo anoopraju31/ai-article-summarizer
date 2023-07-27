@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Form, Hero, Summary } from '../components'
-import { useLazyGetSummaryQuery } from '../services/article'
+import { useLazyGetSummaryQuery } from '../services/articleApi'
 
 type article = {
 	url: string
