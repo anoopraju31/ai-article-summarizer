@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import UrlContainer from './UrlContainer'
 import { useAppDispatch } from '../hooks'
 import { useLazyGetSummaryQuery } from '../services/articleApi'
-import { addSummary, addUrl } from '../services/article'
+import { addSummary, addUrl, setStatus } from '../services/article'
 import { showScaleUp } from '../utills/animations'
 
 type article = {
@@ -17,7 +17,8 @@ const Form = () => {
 	const [allArticles, setAllArticles] = useState<article[]>([])
 	const dispatch = useAppDispatch()
 
-	const [getSummary] = useLazyGetSummaryQuery()
+	const [getSummary, { isFetching, error, isSuccess }] =
+		useLazyGetSummaryQuery()
 
 	useEffect(() => {
 		const temp: string | null = localStorage.getItem('articles')
@@ -27,6 +28,18 @@ const Form = () => {
 			setAllArticles(articlesFromLocalStorage)
 		}
 	}, [])
+
+	useEffect(() => {
+		if (isFetching) {
+			dispatch(setStatus('fetching'))
+		}
+
+		if (error) {
+			dispatch(setStatus('error'))
+		}
+
+		if (isSuccess) dispatch(setStatus('success'))
+	}, [isFetching, error, isSuccess, dispatch])
 
 	// submit url to summarize
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -44,6 +57,7 @@ const Form = () => {
 				setAllArticles(updatedArticles)
 
 				localStorage.setItem('articles', JSON.stringify(updatedArticles))
+				urlInputRef.current.value = ''
 			}
 		}
 	}
