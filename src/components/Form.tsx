@@ -26,6 +26,7 @@ const Form = () => {
 		}
 	}, [])
 
+	// submit url to summarize
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 
@@ -43,6 +44,14 @@ const Form = () => {
 				localStorage.setItem('articles', JSON.stringify(updatedArticles))
 			}
 		}
+	}
+
+	const removeItemfromStorage = (item: article) => {
+		const filteredArticles = allArticles.filter(
+			(article) => article.url !== item.url,
+		)
+		setAllArticles(filteredArticles)
+		localStorage.setItem('articles', JSON.stringify(filteredArticles))
 	}
 
 	return (
@@ -73,7 +82,11 @@ const Form = () => {
 				{/* Url History */}
 				<div className='max-h-60 mt-2 flex flex-col gap-2 overflow-y-auto history'>
 					{allArticles?.map((article, idx) => (
-						<UrlContainer key={idx} item={article} />
+						<UrlContainer
+							key={idx}
+							item={article}
+							remove={removeItemfromStorage}
+						/>
 					))}
 				</div>
 			</div>
