@@ -14,7 +14,7 @@ const Form = () => {
 						type='url'
 						placeholder='Enter a URL'
 						required
-						className='block w-full rounded-md  bg-white py-2.5 pl-10 pr-12 text-sm shadow-lg font-satoshi font-medium focus:outline-none peer'
+						className='block w-full rounded-md  bg-white py-3 pl-10 pr-12 text-sm shadow-lg font-satoshi font-medium focus:outline-none peer'
 					/>
 
 					<button
