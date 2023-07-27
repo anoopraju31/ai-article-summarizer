@@ -10,7 +10,7 @@ const Summary = () => {
 	return (
 		<section className='w-full max-w-7xl flex justify-center items-center'>
 			{isFetching ? (
-				<p>Loading...</p>
+				<Loader />
 			) : error ? (
 				<p className='font-inter font-bold text-black text-center'>
 					Well, that wasn't supposed to happen...
