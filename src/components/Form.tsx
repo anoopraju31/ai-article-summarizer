@@ -1,29 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import UrlContainer from './UrlContainer'
-import { useLazyGetSummaryQuery } from '../services/article'
+
+type formProps = {
+	summarize: (url: string) => Promise<string>
+}
 
 type article = {
 	url: string
 	summary: string
 }
 
-const Form = () => {
-	const [article, setArticle] = useState<article>({
-		url: '',
-		summary: '',
-	})
-	const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery()
+const Form = ({ summarize }: formProps) => {
+	const urlInputRef = useRef<HTMLInputElement>(null)
+	const [allArticles, setAllArticles] = useState<article[]>([])
+
+	useEffect(() => {
+		const temp: string | null = localStorage.getItem('articles')
+
+		if (temp) {
+			const articlesFromLocalStorage: article[] = JSON.parse(temp)
+			setAllArticles(articlesFromLocalStorage)
+		}
+	}, [])
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 
-		const { data } = await getSummary({
-			url: article.url,
-		})
+		if (urlInputRef.current) {
+			let url: string = urlInputRef.current.value
+			let summary: string = await summarize(url)
 
-		if (data) {
-			console.log(data)
+			if (summary) {
+				const updatedArticles = [...allArticles, { url, summary }]
+				setAllArticles(updatedArticles)
+				localStorage.setItem('articles', JSON.stringify(updatedArticles))
+			}
 		}
 	}
 
@@ -40,8 +52,7 @@ const Form = () => {
 					<input
 						type='url'
 						placeholder='Enter a URL'
-						value={article.url}
-						onChange={(e) => setArticle({ ...article, url: e.target.value })}
+						ref={urlInputRef}
 						required
 						className='block w-full rounded-md  bg-white py-3 pl-10 pr-12 text-sm shadow-lg font-satoshi font-medium focus:outline-none peer'
 					/>
