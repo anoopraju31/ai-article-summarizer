@@ -75,3 +75,12 @@ body::-webkit-scrollbar-thumb {
 	background-color: #e77b2f;
   border-radius: 12px;
 }
+
+.history::-webkit-scrollbar {
+	width: 4px;
+}
+
+.history::-webkit-scrollbar-thumb {
+	background-color: #e77b2f;
+  border-radius: 12px;
+}

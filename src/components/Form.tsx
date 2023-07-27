@@ -54,7 +54,7 @@ const Form = () => {
 					<div className='absolute left-0 my-2 ml-3 w-5'>
 						<BiSearch />
 					</div>
-
+					{/* Url Input */}
 					<input
 						type='url'
 						placeholder='Enter a URL'
@@ -70,7 +70,8 @@ const Form = () => {
 					</button>
 				</form>
 
-				<div className='max-h-60 mt-2 flex flex-col gap-2 overflow-y-auto'>
+				{/* Url History */}
+				<div className='max-h-60 mt-2 flex flex-col gap-2 overflow-y-auto history'>
 					{allArticles?.map((article, idx) => (
 						<UrlContainer key={idx} item={article} />
 					))}
