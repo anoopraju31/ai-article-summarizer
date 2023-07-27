@@ -5,7 +5,7 @@ const Footer = () => {
 				<hr className='mb-6 border-gray-400 lg:mb-8' />
 				<span className='block text-sm text-gray-700 text-center leading-6'>
 					© 2023{' '}
-					<a href='https://flowbite.com/' className='hover:underline'>
+					<a href='/' className='hover:underline'>
 						Summarize™
 					</a>
 					. <br className='block sm:hidden' />
