@@ -2,12 +2,11 @@ import React from 'react'
 
 const Navbar = () => {
 	return (
-		<header className='w-full sticky top-0 backdrop-blur-lg'>
+		<header className='w-full sticky top-0 backdrop-blur-lg z-50'>
 			<nav className='w-full max-w-7xl mx-auto sm:px-16 px-6 py-4 flex justify-between items-center'>
 				<div>
 					<h1 className='font-bold text-xl bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent'>
-						{' '}
-						Summarize{' '}
+						Summarizer
 					</h1>
 				</div>
 

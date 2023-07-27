@@ -10,8 +10,8 @@ const Summary = () => {
 						Summary
 					</span>
 				</h2>
-				<div className='py-4 px-6 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
-					<p className='font-inter font-medium text-sm text-gray-700 text-justify'>
+				<div className='p-4 md:px-6 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
+					<p className='font-inter font-medium text-sm text-gray-700'>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
 						ratione ab alias voluptatem error, doloribus id quae nostrum dicta
 						laudantium iure excepturi. Qui nisi aliquid dignissimos non
