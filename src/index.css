@@ -63,3 +63,14 @@
     padding: 0;
   }
 }
+
+/* Custom Scrollbar */
+
+body::-webkit-scrollbar {
+	width: 10px;
+	background-color: #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #000;
+}
