@@ -65,9 +65,9 @@ const Form = ({ summarize }: formProps) => {
 				</form>
 
 				<div className='max-h-60 mt-2 flex flex-col gap-2 overflow-y-auto'>
-					<UrlContainer />
-					<UrlContainer />
-					<UrlContainer />
+					{allArticles?.map((article, idx) => (
+						<UrlContainer key={idx} item={article} />
+					))}
 				</div>
 			</div>
 		</section>

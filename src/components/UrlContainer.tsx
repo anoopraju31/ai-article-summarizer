@@ -1,10 +1,19 @@
 import { GoCopy } from 'react-icons/go'
 
-const UrlContainer = () => {
+interface article {
+	url: string
+	summary: string
+}
+
+type UrlContainerProps = {
+	item: article
+}
+
+const UrlContainer = ({ item }: UrlContainerProps) => {
 	return (
 		<div className='group py-2 px-3 flex justify-start items-center flex-row gap-5 bg-white rounded-lg cursor-pointer hover:bg-transparent hover:text-gray-700 hover:shadow-sm transition-all duration-1000'>
 			<p className='flex-1 font-serif text-gray-600 group-hover:text-orange-400 font-medium text-sm truncate transition-colors duration-1000'>
-				https://www.youtube.com/watch?v=PawdNhhDr4kfjwighwi0gh0wrherjiphhjepjhphj
+				{item.url}
 			</p>
 
 			<div className='w-7 h-7 bg-gray-50 group-hover:bg-white rounded-full backdrop-blur cursor-pointer'>
