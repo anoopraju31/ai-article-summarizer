@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Summerize Articles with OpenAI GPT-4
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simplify your reading with Summize, an open-source article summarizer that transforms lengthy articles into clear and concise summaries
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
 
-### `npm start`
+* Modern User Interface 
+* Connection to OpenAi's Model
+* Integration of RTK
+* Copy to clipboard
+* Caches in LocalStore for offline use
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Frontend:** React, TailwindCSS, Framer-Motion, React-Icons, @reduxjs-toolkit, react-redux, typescript
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. If you don’t have Node.js installed, [install it from here](https://nodejs.org/en/) (Node.js version >= 14.6.0 required)
 
-### `npm run build`
+2. Clone The Repo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  git clone https://github.com/anoopraju31/react-animation-tutorial
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install Dependencies
+```bash
+    npm install
+```    
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Make a copy of the example environment variables file
 
-### `npm run eject`
+   On Linux systems: 
+   ```bash
+   $ cp .env.example .env
+   ```
+   On Windows:
+   ```powershell
+   $ copy .env.example .env
+   ```
+5. Add your [API key](https://rapidapi.com/restyler/api/article-extractor-and-summarizer) to the newly created `.env` file
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Run Local
+```bash
+    npm start
+```

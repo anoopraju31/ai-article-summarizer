@@ -76,6 +76,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 12px;
 }
 
+/* history scrollbar */
 .history::-webkit-scrollbar {
 	width: 4px;
 }
@@ -83,4 +84,10 @@ body::-webkit-scrollbar-thumb {
 .history::-webkit-scrollbar-thumb {
 	background-color: #e77b2f;
   border-radius: 12px;
+}
+
+/* text select */
+::selection {
+  background: #e77b2f;
+  color: #fff;
 }

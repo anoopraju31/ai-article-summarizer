@@ -23,7 +23,7 @@ const Summary = () => {
 							Summary
 						</span>
 					</h2>
-					<div className='p-4 md:px-6 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
+					<div className='p-4 md:px-6 bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
 						<p className='font-inter font-medium text-sm text-gray-700'>
 							{summary}
 						</p>
